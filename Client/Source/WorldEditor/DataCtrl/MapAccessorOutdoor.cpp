@@ -12,3 +12,23 @@
 // Find and delete
 	pTerrainAccessor->LoadShadowTexture (szShadowTexName);
 	pTerrainAccessor->LoadShadowMap (szShadowMapName);
+
+// Find
+// Shadow Map
+void CMapOutdoorAccessor::RenderToShadowMap()
+{
+	...
+}
+
+// Add below
+/* - DYNAMIC_OBJECT_SHADOWS ---------------------------- */
+void CMapOutdoorAccessor::RenderObjectShadowsToTexture()
+{
+	for (int i = 0; i < AROUND_AREA_NUM; ++i)
+	{
+		CAreaAccessor* pAreaAccessor;
+		if (GetAreaPointer(i, (CArea**)&pAreaAccessor) && pAreaAccessor)
+			pAreaAccessor->RenderShadowObjects();
+	}
+}
+/* ----------------------------------------------------- */
